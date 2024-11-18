@@ -59,14 +59,14 @@ ul.breadcrumb li a:hover {
     grid-template-columns: 100%;
     grid-template-rows: max-content max-content max-content;
 }
-.header {
+header {
   background-color: #fff;
   width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: 50px;
 }
 /* Logo Section */
 .logo {
@@ -97,83 +97,51 @@ ul.breadcrumb li a:hover {
   margin-left: 80px;
 }
 /* Navigation Styles */
-.horizontal-nav-list {
-  display: flex;
+nav {
+  background-color:  white;
+  padding: 1rem;
+  padding-right: 50px;
 }
-.horizontal-nav-list ul {
-  list-style-type: none;
-  padding: 0;
+.navmenu {
+  list-style: none;
   margin: 0;
-  display: flex;
-  gap: 10px;
-  float: right;
-}
-.horizontal-nav-list li {
-  display: inline-block;
-}
-.nav-item {
-  font-family: 'Roboto', sans-serif;
-  font-size: 1em;
-  color: var(---black-grey);
-  padding: 10px 30px;
-  text-decoration: none;
-}
-
-/* Active Nav Item with Orange Underline */
-.nav-item.active, .nav-item:hover {
-    border-bottom: 3px solid var(--dark-orange);
-}
-/* Basic Navbar Styling */
-.navbar {
-  background-color: #fff;
-}
-.nav-list {
-  display: flex;
-  list-style-type: none;
   padding: 0;
-  margin: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: baseline;
 }
-.nav-item {
+#wrapper > header > nav > ul > li.navitem.active > a {
+  text-decoration: underline 3px var(--dark-orange);
+}
+.navitem {
   position: relative;
-  margin-right: 20px;
+  padding: 10px 20px;
 }
-.nav-item a {
+.navlink {
+  color: var(---black-grey);
   text-decoration: none;
-  color: #333;
-  padding: 10px;
-  font-weight: 500;
+  padding: 0.5rem 1rem;
+  display: block;
 }
-.nav-item a:hover {
-  color: #ff9600;
-}
-/* Dropdown Menu Styling */
 .dropdown {
+  display: none; 
   position: absolute;
   top: 100%;
   left: 0;
-  background-color: #fff;
-  list-style-type: none;
-  padding: 10px 0 0 0;
-  margin-top: 3px;
-  width: 230px;
-  display: none;
-}
-.dropdown li a {
-  text-decoration: none;
-  color: #666;
-  display: block;
-  font-weight: 400;
-  padding: 20px;
-}
-.dropdown li a:hover {
-  color: black;
-  background-color: var(--extra-light-orange);
+  padding: 0;
+  list-style: none;
+  z-index: 1000;
 }
 
-/* Show dropdown on hover */
-.nav-item:hover .dropdown {
-  display: block;
+.dropdown-link {
+  color: var(---black-grey);
+  text-decoration: none;
 }
+.dropdown-link:hover {
+  text-decoration: underline 2px var(--dark-orange);
+}
+
 /*---------------------------- MAIN START ------------------------------------ */
 main {
   display: flex;
@@ -427,8 +395,67 @@ footer img {
   width: 100%;
   height: auto;  
 }
-@media (max-width: 600px) {
+@media (max-width: 780px) {
+
   header {
     flex-direction: column;
+    gap: 0;
+  }
+  nav {
+    padding: 10px;
+    text-align: center;
+  }
+  .navbar {
+    width: 100%;
+  }
+  .navmenu {
+    flex-direction: column;
+    align-items: center;
+  }
+  .dropdown.open {
+    display: flex; 
+    background-color: var(--extra-light-orange);
+    margin-top: 20px;
+    padding: 10px 40px 10px 40px;
+    flex-direction: column;
+    gap: 1rem;
+    width: 10rem;
+  }
+  .dropdown {
+    position: static;
+  }
+  section, #news, #events, footer, #footer-links {
+    display: flex;
+    flex-direction: column;
+  }
+  .hero-content {
+    justify-items: center;
+    text-align: center;
+  }
+  .hero-content, .about-content {
+    max-width: 100%; 
+  }
+  footer {
+    text-align: center
+  }
+}
+
+/* Desktop hover functionality */
+@media (min-width: 769px) {
+  .navmenu {
+    flex-direction: row; 
+  }
+
+  .dropdown {
+    display: none; 
+  }
+
+  .navitem:hover > .dropdown {
+    display: flex;
+    background-color: var(--extra-light-orange);
+    padding: 10px 50px 10px 50px;
+    flex-direction: column;
+    gap: 1rem;
+    width: 150px;
   }
 }
